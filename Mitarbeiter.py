@@ -1,3 +1,5 @@
 class Mitarbeiter:
     def __init__(self) -> None:
-        pass
+        self.name: str
+        self.vorgesetzter: str
+        self.bestellLimit: int

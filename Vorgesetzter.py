@@ -1,3 +1,4 @@
 class Vorgesetzter:
     def __init__(self) -> None:
-        pass
+        self.name: str
+        self.bestellLimit: int

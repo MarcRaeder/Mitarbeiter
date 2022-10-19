@@ -1,3 +1,6 @@
+from Mitarbeiter import Mitarbeiter
+
+
 def main() -> None:
     pass
 
