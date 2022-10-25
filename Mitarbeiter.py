@@ -15,21 +15,21 @@ class Mitarbeiter:
         self._name: str = name
 
     @classmethod
-    def setAllgemeinesLimit(cls, limit: int) -> int:
+    def setzeAllgemeinesLimit(cls, limit: int) -> int:
         cls._bestelllimit: int = limit
         return cls._bestelllimit
 
-    def setVorgesetzten(self, name: Vorgesetzter) -> Vorgesetzter:
+    def setzeVorgesetzten(self, name: Vorgesetzter) -> Vorgesetzter:
         self._vorgesetzter = name
         return name
 
-    def setName(self, name: str) -> str:
+    def setzeName(self, name: str) -> str:
         self._name = name
 
-    def getName(self) -> str:
+    def bekommeName(self) -> str:
         return self._name
 
-    def getVorgesetzten(self) -> Vorgesetzter:
+    def bekommeVorgesetzten(self) -> Vorgesetzter:
         if self._vorgesetzter == None and self.__class__.__name__ == "Mitarbeiter":
             print("freier Mitarbeiter")
         elif self._vorgesetzter == None:
@@ -37,7 +37,7 @@ class Mitarbeiter:
         elif self._vorgesetzter is not None:
             return self._vorgesetzter
 
-    def getBestelllimit(self) -> int:
+    def bekommeBestelllimit(self) -> int:
         return self._bestelllimit
 
     def darfBestellen(self, beschaffung: int) -> bool:
@@ -49,30 +49,30 @@ class Mitarbeiter:
     def gibInfo(self):
         if self._vorgesetzter is not None:
             print(
-                f"Ich bin {self.__class__.__name__}, Name {self.getName()}. Mein Vorgesetzter ist {self._vorgesetzter.getName()}. Mein Bestelllimit ist {self.getBestelllimit()} EUR. ")
+                f"Ich bin {self.__class__.__name__}, Name {self.bekommeName()}. Mein Vorgesetzter ist {self._vorgesetzter.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. ")
         elif self._vorgesetzter == None and self.__class__.__name__ == "Mitarbeiter":
             print(
-                f"Ich bin freier Mitarbeiter, Name {self.getName()}. Mein Bestelllimit ist {self.getBestelllimit()} EUR. ")
+                f"Ich bin freier Mitarbeiter, Name {self.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. ")
         else:
             print(
-                f"Ich bin {self.__class__.__name__}, Name {self.getName()}. Mein Bestelllimit ist {self.getBestelllimit()} EUR. ")
+                f"Ich bin {self.__class__.__name__}, Name {self.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. ")
 
     def gibHierarchie(self, mitarbeiter: Mitarbeiter) -> str:
         if self._vorgesetzter == None and self.__class__.__name__ == "Mitarbeiter":
-            print(f"freier Mitarbeiter {self.getName()}")
+            print(f"freier Mitarbeiter {self.bekommeName()}")
         else:
             hierarchie = []
-            chef = mitarbeiter.getVorgesetzten()
+            chef = mitarbeiter.bekommeVorgesetzten()
 
             while True:
                 try:
-                    chefdata = f"{chef.__class__.__name__} {chef.getName()}"
+                    chefdata = f"{chef.__class__.__name__} {chef.bekommeName()}"
                     hierarchie.insert(0, chefdata)
-                    chef = chef.getVorgesetzten()
+                    chef = chef.bekommeVorgesetzten()
 
                 except AttributeError:
                     break
 
             for element in hierarchie:
                 print(element)
-            print(f"{self.__class__.__name__} {self.getName()}")
+            print(f"{self.__class__.__name__} {self.bekommeName()}")
