@@ -1,4 +1,9 @@
-class Vorgesetzter:
-    def __init__(self) -> None:
-        self.name: str
-        self.bestellLimit: int
+from Mitarbeiter import Mitarbeiter
+
+
+class Vorgesetzter(Mitarbeiter):
+    def __init__(self, name) -> None:
+        super().__init__(name)
+
+    def setBestelllimit(self, limit: int) -> int:
+        self._bestelllimit = limit
