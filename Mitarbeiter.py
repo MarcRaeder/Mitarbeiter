@@ -32,8 +32,10 @@ class Mitarbeiter:
     def bekommeVorgesetzten(self) -> Vorgesetzter:
         if self._vorgesetzter == None and self.__class__.__name__ == "Mitarbeiter":
             print("freier Mitarbeiter")
+            return None
         elif self._vorgesetzter == None:
             print("Es wurde kein Vorgesetzter zugewiesen")
+            return None
         elif self._vorgesetzter is not None:
             return self._vorgesetzter
 
@@ -43,19 +45,24 @@ class Mitarbeiter:
     def darfBestellen(self, beschaffung: int) -> bool:
         if beschaffung <= self._bestelllimit:
             return True
-        elif beschaffung > self._bestelllimit:
+        if beschaffung > self._bestelllimit:
             return False
 
     def gibInfo(self):
         if self._vorgesetzter is not None:
             print(
-                f"Ich bin {self.__class__.__name__}, Name {self.bekommeName()}. Mein Vorgesetzter ist {self._vorgesetzter.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. ")
-        elif self._vorgesetzter == None and self.__class__.__name__ == "Mitarbeiter":
+                f"Ich bin {self.__class__.__name__}, Name {self.bekommeName()}. Mein Vorgesetzter ist {self._vorgesetzter.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. "
+            )
+            return
+        if self._vorgesetzter == None and self.__class__.__name__ == "Mitarbeiter":
             print(
-                f"Ich bin freier Mitarbeiter, Name {self.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. ")
-        else:
-            print(
-                f"Ich bin {self.__class__.__name__}, Name {self.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. ")
+                f"Ich bin freier Mitarbeiter, Name {self.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. "
+            )
+            return
+
+        print(
+            f"Ich bin {self.__class__.__name__}, Name {self.bekommeName()}. Mein Bestelllimit ist {self.bekommeBestelllimit()} EUR. "
+        )
 
     def gibHierarchie(self, mitarbeiter: Mitarbeiter) -> str:
         if self._vorgesetzter == None and self.__class__.__name__ == "Mitarbeiter":
