@@ -11,7 +11,7 @@ class Mitarbeiter:
     _bestelllimit: int = 20
     _vorgesetzter: Vorgesetzter = None
 
-    def __init__(self, name) -> None:
+    def __init__(self, name: str) -> None:
         self._name: str = name
 
     @classmethod
@@ -19,9 +19,9 @@ class Mitarbeiter:
         cls._bestelllimit: int = limit
         return cls._bestelllimit
 
-    def setzeVorgesetzten(self, name: Vorgesetzter) -> Vorgesetzter:
-        self._vorgesetzter = name
-        return name
+    def setzeVorgesetzten(self, vorgesetzter: Vorgesetzter) -> Vorgesetzter:
+        self._vorgesetzter: Vorgesetzter = vorgesetzter
+        return vorgesetzter
 
     def setzeName(self, name: str) -> str:
         self._name = name
@@ -29,7 +29,7 @@ class Mitarbeiter:
     def bekommeName(self) -> str:
         return self._name
 
-    def bekommeVorgesetzten(self) -> Vorgesetzter:
+    def bekommeVorgesetzten(self) -> Vorgesetzter or None:
         if self._vorgesetzter == None and self.__class__.__name__ == "Mitarbeiter":
             print("freier Mitarbeiter")
             return None
