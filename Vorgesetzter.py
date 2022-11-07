@@ -1,4 +1,4 @@
-from Mitarbeiter import Mitarbeiter
+from mitarbeiter import Mitarbeiter
 
 
 class Vorgesetzter(Mitarbeiter):
